@@ -58,8 +58,6 @@ class Order
 
     selected_restaurant = gets
 
-    return selected_restaurant
-
   end
 
 
@@ -94,8 +92,6 @@ class Order
       dishname = get_dishname()
     end
 
-    return dishname
-
   end
 
    
@@ -103,8 +99,6 @@ class Order
   def get_cost
 
     cost = @price.to_i * @quantity.to_i
-
-    return cost
   
   end
 
