@@ -36,9 +36,9 @@ class Order
     check = check[0]
 
     if check == "no"
-      return 1
+      true
     else 
-      return 0
+      false
     end
 
   end
@@ -49,16 +49,13 @@ class Order
 
     count = 0
     puts "Available Restaurants are : "
-    for i in 0..1 do
-
+    2.times do |i|
       count = count + 1
       puts "#{count}. #{$restaurants_list[i]} "
     end
     puts "Select one restaurant : "
 
     selected_restaurant = gets
-
-    return selected_restaurant
 
   end
 
@@ -94,8 +91,6 @@ class Order
       dishname = get_dishname()
     end
 
-    return dishname
-
   end
 
    
@@ -103,8 +98,6 @@ class Order
   def get_cost
 
     cost = @price.to_i * @quantity.to_i
-
-    return cost
   
   end
 
@@ -114,16 +107,10 @@ class Order
 
     puts "Enter your Name : "
     @customer_name = gets
-
     selected_restaurant = show_restaurants()
-
     index = selected_restaurant.to_i - 1
-
     @restaurant_name = $restaurants_list[index]
-
-
     dishname = get_dishname()
-
     c = $dish[@restaurant_name]
     dish_temp = c[dishname.to_i - 1]
     dish_name = dish_temp.keys
