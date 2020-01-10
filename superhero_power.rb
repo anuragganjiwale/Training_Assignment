@@ -2,9 +2,9 @@ module Superpower
   def check_possesed_power(power_name)
 
     if(power_name == @power)
-      puts "Can #{power_name}"
+      "Can #{power_name}"
     else
-      puts "Cant #{power_name}"
+      "Cant #{power_name}"
     end
 
   end
