@@ -6,9 +6,9 @@ $dish_available = {"A" => [{"pulav" =>"yes"},{"Dal" => "no"}],"B" => [{"Burger" 
 
 
 class Order
-  @@order_identifier = 0 
-	def initialize()
-		
+  @@order_identifier = 0
+
+	def initialize
 		@customer_name = ""
 		@restaurant_name = ""
 		@amount = 0
@@ -16,20 +16,14 @@ class Order
     @order_status = "Not Delivered"
     @quantity = 0
     @@order_identifier = @@order_identifier + 1
-  
   end
 
-  
+
   def self.order_id_update
-
     @@order_identifier
-
   end
-
-
 
   def check_dish_availability(dish_number)
-
     check_array = $dish_available[@restaurant_name]
     check = check_array[dish_number.to_i - 1]
     check = check.values
@@ -37,14 +31,13 @@ class Order
 
     if check == "no"
       true
-    else 
+    else
       false
     end
-
   end
 
 
-  
+
   def show_restaurants
 
     count = 0
@@ -76,7 +69,7 @@ class Order
       price = y[0]
 
       puts "#{count}. Dish Name : #{name} , Price : #{price}"
-    
+
   end
 
     puts "Select a Dish"
@@ -93,16 +86,16 @@ class Order
 
   end
 
-   
-  
+
+
   def get_cost
 
     cost = @price.to_i * @quantity.to_i
-  
+
   end
 
 
-  
+
   def accept_order()
 
     puts "Enter your Name : "
@@ -132,8 +125,8 @@ class Order
     puts "Quantity : #{@quantity}"
     puts "Total Amount to Pay : #{@amount}"
     puts "Order Status : #{@order_status}"
-      
-    
+
+
     puts "Whether order was delivered : (y/n) : "
     status = gets.chomp
 
@@ -141,7 +134,7 @@ class Order
 
       @order_status = "Delivered"
       puts "Thank You for ordering !!!"
-      
+
     else
 
       @order_status = "Pending"
