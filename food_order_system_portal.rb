@@ -39,7 +39,6 @@ class Order
 
 
   def show_restaurants
-
     count = 0
     puts "Available Restaurants are : "
     2.times do |i|
@@ -49,35 +48,27 @@ class Order
     puts "Select one restaurant : "
 
     selected_restaurant = gets
-
-  end
+	end
 
 
 
   def get_dishname
-
-    name_of_dish = @restaurant_name
+		name_of_dish = @restaurant_name
     dishes = $dish[name_of_dish]
-
-    count = 0
+		count = 0
     dishes.each do |x|
-
-      count = count + 1
+			count = count + 1
       y = x.keys
       name = y[0]
       y = x.values
       price = y[0]
+			puts "#{count}. Dish Name : #{name} , Price : #{price}"
 
-      puts "#{count}. Dish Name : #{name} , Price : #{price}"
-
-  end
-
-    puts "Select a Dish"
+		end
+		puts "Select a Dish"
     dishname = gets
-
-    check = check_dish_availability(dishname)
-
-    if check == 1
+		check = check_dish_availability(dishname)
+		if check == 1
       puts
       puts "Sorry Selected Dish is Not available !!!"
       puts "Try Again"
@@ -89,16 +80,13 @@ class Order
 
 
   def get_cost
-
-    cost = @price.to_i * @quantity.to_i
-
-  end
+		cost = @price.to_i * @quantity.to_i
+	end
 
 
 
   def accept_order()
-
-    puts "Enter your Name : "
+		puts "Enter your Name : "
     @customer_name = gets
     selected_restaurant = show_restaurants()
     index = selected_restaurant.to_i - 1
@@ -110,40 +98,27 @@ class Order
     @dishname = dish_name[0]
     price_temp = dish_temp.values
     @price = price_temp[0]
-
-    puts "Enter Quantity of Dish : "
+		puts "Enter Quantity of Dish : "
     @quantity = gets
-
-    @amount = get_cost()
-
-    puts "\n\n"
+		@amount = get_cost()
+		puts "\n\n"
     puts "Order Summary : "
-
-    puts "Customer Name : #{@customer_name}"
+		puts "Customer Name : #{@customer_name}"
     puts "Selected Restaurant : #{@restaurant_name}"
     puts "Selected Dish : #{@dishname}"
     puts "Quantity : #{@quantity}"
     puts "Total Amount to Pay : #{@amount}"
     puts "Order Status : #{@order_status}"
-
-
-    puts "Whether order was delivered : (y/n) : "
+		puts "Whether order was delivered : (y/n) : "
     status = gets.chomp
-
-    if status == 'Y' or status == 'y'
-
-      @order_status = "Delivered"
+		if status == 'Y' or status == 'y'
+			@order_status = "Delivered"
       puts "Thank You for ordering !!!"
-
-    else
-
-      @order_status = "Pending"
+		else
+			@order_status = "Pending"
       puts "Please Wait for Some Time"
-
-    end
-
-  end
-
+		end
+	end
 end
 
 
