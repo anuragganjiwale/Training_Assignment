@@ -15,3 +15,6 @@ Food Ordering Portal has functionalities:
 2. flash - run fast
 3. shaktiman - fly
 4. spiderman - jump
+
+## Problem Statement 3
+### Implement inheritance using public , private and protected access controllers.
