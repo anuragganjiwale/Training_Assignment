@@ -1,51 +1,45 @@
-module Validate_if_input_is_number
+module ValidateIfInputIsNumber
   def is_number? number
-    return number.to_i.to_s == number
+    number.to_i.to_s == number
   end
 end
 
 class Person
-  include Validate_if_input_is_number
-  attr_accessor :name_of_person , :status_of_person , :identifier_number , :age_of_person
-  def initialize()
-    name_of_person = ""
-    status_of_person = ""
-    identifier_number = ""
-    age_of_person = ""
-  end
+  include ValidateIfInputIsNumber
+  attr_accessor :name_of_person, :status_of_person, :identifier_number, :age_of_person
 
-  public
   def person
     puts "Inside class #{self.class}"
   end
 
   def details_of_Person
-    puts "Enter name of Person:"
+    puts 'Enter name of Person:'
     name_of_person = gets.chomp
-    puts "Enter the status of Person:"
+    puts 'Enter the status of Person:'
     status_of_person = gets.chomp
-    puts "Enter ID No. of Person:"
-    while true do
+    puts 'Enter ID No. of Person:'
+    while true
       identifier_number = gets.chomp
       if is_number? identifier_number
-        puts "ID No. of Person is : #{identifier_number}"
         break
       else
-        puts "Re-enter ID Number" 
+       puts 'Re-enter ID Number' 
       end
     end
-    puts "Enter age of Employee:"
-    while true do
+    puts 'Enter age of Employee:'
+    while true 
       age_of_person = gets.chomp
       if is_number? age_of_person
-        puts "Age of #{name_of_person} is : #{age_of_person}"
         break
       else
-        puts "Invalid age"
-        puts "Re-enter Age"
+        puts 'Re-enter Age'
       end
     end
-    puts " "
+    
+    show_details
+  end
+
+  def show_details
     puts "Name of Person is : #{name_of_person}"
     puts "Status of Person is  : #{status_of_person}"
     puts "ID No. of #{status_of_person} is : #{identifier_number}"
@@ -53,24 +47,25 @@ class Person
   end
 
   private
+
   def private_method
-    puts "In Private Method"
+    puts 'In Private Method'
   end
 
   protected
+
   def protected_method
-    puts "In Protected Method"
+    puts 'In Protected Method'
   end
 end
 
 
 class Employee < Person
-  public
   def employee
     puts "Inside class #{self.class}"
   end
 
-   def check_protected_method
+  def check_protected_method
     protected_method
   end
 end
@@ -82,6 +77,6 @@ class Customer < Person
 end
 
 
-#Employee.new.private_method     #private methods are not accessed outside class
+# Employee.new.private_method     # private methods are not accessed outside class
 Customer.new.details_of_Person
-Employee.new.check_protected_method   #protected methods are accessed in child class
+Employee.new.check_protected_method   # protected methods are accessed in child class
